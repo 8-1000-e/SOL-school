@@ -1,0 +1,151 @@
+site_name: Solana Handbook
+site_url: https://ackeeblockchain.com/solana-handbook
+repo_url: https://github.com/Ackee-Blockchain/solana-handbook
+repo_name: Ackee-Blockchain/solana-handbook
+site_description: For Experts by Experts
+site_author: Ackee Blockchain
+
+nav:
+  - Solana Introduction:
+      - handbook/chapter1/index.md
+      - Introduction: handbook/chapter1/introduction.md
+      - Blockchain: handbook/chapter1/blockchain.md
+      - Transaction: handbook/chapter1/transaction.md
+      - Infrastructure: handbook/chapter1/infrastructure.md
+      - Security: handbook/chapter1/security.md
+      - Slots, Epochs and Leaders: handbook/chapter1/slots-epochs-leaders.md
+      - Smart Contract: handbook/chapter1/smart-contract.md
+      - Ecosystem: handbook/chapter1/ecosystem.md
+  - Core Concepts:
+      - handbook/chapter2/index.md
+      - Proof of History: handbook/chapter2/proof-of-history.md
+      - Tower BFT: handbook/chapter2/tower-bft.md
+      - Turbine: handbook/chapter2/turbine.md
+      - Gulf Stream: handbook/chapter2/gulf-stream.md
+      - Sealevel: handbook/chapter2/sealevel.md
+      - Pipelining: handbook/chapter2/pipelining.md
+      - Cloudbreak: handbook/chapter2/cloudbreak.md
+      - Archivers: handbook/chapter2/archivers.md
+  - Programming Model:
+      - handbook/chapter3/index.md
+      - Interacting with the Network: handbook/chapter3/interacting-with-the-network.md
+      - Transaction Lifecycle: handbook/chapter3/transaction-lifecycle.md
+      - Transaction Anatomy: handbook/chapter3/transaction-anatomy.md
+      - Account Anatomy: handbook/chapter3/account-anatomy.md
+      - Runtime Policy: handbook/chapter3/runtime-policy.md
+      - Program Derived Address: handbook/chapter3/program-derived-address.md
+      - Cross Program Invocation: handbook/chapter3/cross-program-invocation.md
+  - Solana Program Library:
+      - handbook/chapter4/index.md
+      - Token Program: handbook/chapter4/token-program.md
+      - Mint Account: handbook/chapter4/mint-account.md
+      - Token Account: handbook/chapter4/token-account.md
+      - Token-2022: handbook/chapter4/token-2022.md
+      - Account Compression: handbook/chapter4/account-compression-program.md
+  - Appendices:
+    - handbook/appendices/index.md
+    - Appendix A - Ecosystem:
+      - Wallets: handbook/appendices/appendixA/wallets.md
+      - Popular Projects: handbook/appendices/appendixA/popular-projects.md
+      - Solana Mobile Phone: handbook/appendices/appendixA/solana-mobile-phone.md
+    - Appendix B - NFTs:
+      - NFTs: handbook/appendices/appendixB/nfts.md
+      - What is Metaplex?: handbook/appendices/appendixB/what-is-metaplex.md
+      - Token Metadata Program: handbook/appendices/appendixB/token-metadata-program.md
+      - What has this got to do with NFTs?: handbook/appendices/appendixB/what-nfts.md
+      - Is this all ? “No, Token Standard”: handbook/appendices/appendixB/token-standard.md
+      - Candy Machine: handbook/appendices/appendixB/candy-machine.md
+      - Compression: handbook/appendices/appendixB/compression.md
+      - Storing Metadata Off-chain: handbook/appendices/appendixB/metadata-off-chain.md
+      - Executable NFT: handbook/appendices/appendixB/executable-nft.md
+    - About Authors: handbook/appendices/authors.md
+
+# Beware this is strongly dependent on names of folders , example:
+# images have to be stored within the docs/images folder
+theme:
+  # https://squidfunk.github.io/mkdocs-material/setup/
+  name: material
+  logo: "images/abch-logo.png"
+  favicon: "images/favicon.ico"
+  custom_dir: overrides
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/?h=palette+sw#color-palette-toggle
+  palette:
+    - scheme: default # light mode scheme
+      primary: black
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - scheme: slate # dark mode scheme
+      primary: black
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+  features:
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
+    - navigation.expand
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#back-to-top-button
+    - navigation.top
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
+    - navigation.indexes
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/?h=content+copy#code-copy-button
+    - content.code.copy
+    - navigation.tabs
+    # may be used
+    # - navigation.footer
+
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/?h=social#social-links
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Ackee-Blockchain/solana-handbook
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/Q3J5KUXuXK
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/AckeeBlockchain
+
+# https://www.mkdocs.org/user-guide/configuration/#plugins
+plugins:
+  - search
+  - macros
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: false
+
+# https://squidfunk.github.io/mkdocs-material/customization/?h=extra+css#additional-css
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # https://squidfunk.github.io/mkdocs-material/reference/math/
+  # used for fractions and math
+  - pymdownx.arithmatex:
+      generic: true
+  # https://squidfunk.github.io/mkdocs-material/reference/data-tables/
+  - tables
+  # https://squidfunk.github.io/mkdocs-material/reference/math/
+  # used for fractions and math
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

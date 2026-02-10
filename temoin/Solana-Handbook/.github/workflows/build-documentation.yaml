@@ -1,0 +1,35 @@
+name: Build documentation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ secrets.DOCUMENTATION_DEPLOY_KEY }}
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - uses: ./.github/actions/setup-documentation/
+      - name: Fetch documentation branch
+        run: git fetch origin documentation:documentation --depth=1
+      - name: Build documentation
+        working-directory: .
+        run: |
+          git config --global user.email "solanahandbook@ackee.com"
+          git config --global user.name "Handbook bot"
+          mike deploy -b documentation latest
+      - name: Checkout documentation branch
+        run: git checkout -f documentation
+      - name: Push documentation
+        uses: ad-m/github-push-action@master
+        with:
+          ssh: true
+          branch: documentation
